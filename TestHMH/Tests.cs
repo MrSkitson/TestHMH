@@ -28,7 +28,8 @@ namespace TestHMH
 
             var apiKey = config["FavQsApiKey"];
             _httpClient = CreateHttpClient(apiKey);
-            AuthenticateAndSetToken().GetAwaiter().GetResult();
+
+           // AuthenticateAndSetToken().GetAwaiter().GetResult();
         }
         private async Task AuthenticateAndSetToken()
         {
@@ -79,7 +80,7 @@ namespace TestHMH
                 BaseAddress = new System.Uri("https://favqs.com/api")
             };
             httpClient.DefaultRequestHeaders.Add("Authorization", $"Token token=\"{apiKey}\"");
-
+           
             return httpClient;
         }
        
@@ -159,19 +160,12 @@ namespace TestHMH
         [Test]
         public async Task GetsListQuotes()
         {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Get, "https://favqs.com/api/quotes");
-         
-            request.Headers.Add("Authorization", "Token token=\"00b2fb887138cd6908d1274b5e8139cf\"");
-            request.Headers.Add("Cookie", "_favqs_session=2N08x7MXnxuollQPddUngMbg2CjC8helNka20TIwpVZUVRtV2i8FGqrT%2Bkb4Qvits6kD4sOxGgyQ7K%2FGB4H3xopEX0apd%2F%2BvDTfmxW1NKGBcLVXmYg5wA92TWNETx61QELizKNVOPbKWEaZ6dgxTUHr6hq4tvy43btNqwlbosJ7z8CqblCGwcwu7E%2BKyApVetZ%2Bi4inRIp7NISqO--KxQvPR9jP%2FL18ZRn--sv3EWTFlZtyExNoQdfcL9w%3D%3D");
-            var response = await client.SendAsync(request);
+            var requestUri = "https://favqs.com/api/quotes";
+            var response = await _httpClient.GetAsync(requestUri);
             response.EnsureSuccessStatusCode();
-
-            //// Check if the response is successful (status code 200 OK)
+            // Check if code is 200
             Assert.IsTrue(response.IsSuccessStatusCode);
             Console.WriteLine(await response.Content.ReadAsStringAsync());
-
-
         }
 
     }
