@@ -1,4 +1,4 @@
-his is a Tech Test project.
+This is a Tech Test project.
 The task is to code a suite of tests that validates the main functionality of the FAV QUOTE and LIST QUOTES endpoints. 
 I used the C# language and NUnit test project to check functionality.
 I've created a JSON file, appsettings.json, to save my data (Token, login, password).
