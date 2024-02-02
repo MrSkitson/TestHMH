@@ -1,6 +1,7 @@
-This is a Tech Test project.
 The task is to code a suite of tests that validates the main functionality of the FAV QUOTE and LIST QUOTES endpoints. 
-I used the C# language and NUnit test project to check functionality.
+I used the C# language and NUnit test project to check functionality in Visual Studio 2022. 
+For launch the project you should use Text Explorer from VS. 
+
 I've created a JSON file, appsettings.json, to save my data (Token, login, password).
 
 I added a Setup method to prepare before testing: a JSON file with the token data & create an HttpClient with this token through the private HttpClient CreateHttpClient(string apiKey) method.
